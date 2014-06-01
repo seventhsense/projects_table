@@ -2,27 +2,27 @@
   <%= stylesheet_link_tag 'jquery.dataTables.min.css', :plugin => 'projects_table' %>
   <%= stylesheet_link_tag 'projects_table.css', :plugin => 'projects_table' %>
 <% end %>
-<h2>Projects Table</h2>
+<h2><%= t :projects_table %></h2>
 
 <table id="projects_table"%>
   <thead>
     <tr>
       <th> 
-        <div class="cell_header">Project Name</div>
-        <div class="cell_content">created on</div>
-        <div class="cell_content">updated on</div>
+        <div class="cell_header"><%= t :project_name %></div>
+        <div class="cell_content"><%= t :created_on %></div>
+        <div class="cell_content"><%= t :updated_on %></div>
       </th>
       <th> 
-        <div class="cell_header">Recent Version</div>
-        <div class="cell_content">Effective Date</div> 
+        <div class="cell_header"><%= t :recent_version %></div>
+        <div class="cell_content"> <%= t :effective_date %></div> 
       </th>
       <th> 
-        <div class="cell_header">Last Updated Issue</div>
-        <div class="cell_content">Updated on</div>
+        <div class="cell_header"><%= t :last_updated_issue %></div>
+        <div class="cell_content"><%= t :updated_on %></div>
       </th>
       <th>
-        <div class="cell_header">Next Issue</div>
-        <div class="cell_content">Due Date</div>
+        <div class="cell_header"><%= t :next_issue %></div>
+        <div class="cell_content"><%= t :due_date %></div>
       </th>
     </tr>
   </thead>
