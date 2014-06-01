@@ -1,0 +1,25 @@
+.cell_header{
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+.cell_content{
+  margin: 0;
+  padding-left: 10px;
+  color: #777;
+}
+table.dataTable td, th{
+  text-align: left;
+  vertical-align: top;
+}
+table.dataTable tr.odd{
+  background-color: #eee;
+}
+table.dataTable tr.even{
+
+}
+table.dataTable td:hover{
+  background-color: lightsteelblue;
+}
+
+

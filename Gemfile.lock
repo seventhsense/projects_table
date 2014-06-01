@@ -19,11 +19,15 @@ GEM
     builder (3.2.2)
     erubis (2.7.0)
     i18n (0.6.9)
+    jbuilder (1.5.3)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     json (1.8.1)
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     minitest (5.3.4)
+    multi_json (1.10.1)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -35,4 +39,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  jbuilder
   kaminari (= 0.15.1)

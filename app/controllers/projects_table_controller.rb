@@ -1,8 +1,8 @@
 class ProjectsTableController < ApplicationController
   unloadable
 
-
   def index
-    @projects = Project.all
+    @projects = Project.where('status <> 5')
   end
+
 end

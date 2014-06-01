@@ -1,27 +1,28 @@
 <% content_for :header_tags do %>
   <%= stylesheet_link_tag 'jquery.dataTables.min.css', :plugin => 'projects_table' %>
+  <%= stylesheet_link_tag 'projects_table.css', :plugin => 'projects_table' %>
 <% end %>
 <h2>Projects Table</h2>
 
-<table id="projects_table">
+<table id="projects_table"%>
   <thead>
     <tr>
       <th> 
-        Project Name <br>
-        created on <br>
-        updated on
+        <div class="cell_header">Project Name</div>
+        <div class="cell_content">created on</div>
+        <div class="cell_content">updated on</div>
       </th>
       <th> 
-        Version <br>
-        Effective Date 
+        <div class="cell_header">Recent Version</div>
+        <div class="cell_content">Effective Date</div> 
       </th>
       <th> 
-        Last Updated Issue<br>
-        Updated on
+        <div class="cell_header">Last Updated Issue</div>
+        <div class="cell_content">Updated on</div>
       </th>
       <th>
-        Next Issue<br>
-        Due Date
+        <div class="cell_header">Next Issue</div>
+        <div class="cell_content">Due Date</div>
       </th>
     </tr>
   </thead>
@@ -29,24 +30,42 @@
     <% @projects.each do |project| %>
     <tr>
       <td> 
-        <%= link_to project.name, project_path(project) %><br>
-        <%= project.created_on %> <br>
-        <%= project.updated_on %>
+        <div class="cell_header">
+          <%= link_to project.name, project_path(project)%>
+        </div>
+        <div class="cell_content">
+          <%= project.created_on %> 
+        </div>
+        <div class="cell_content">
+          <%= project.updated_on %>
+        </div>
       </td>
       <% version = project.versions.order(:effective_date).first %>
       <td> 
-        <%= link_to(version.name, version_path(version)) unless version.nil? %> <br>
-        <%= version.effective_date unless version.nil? %> 
+        <div class="cell_header">
+          <%= link_to(version.name, version_path(version)) unless version.nil? %>
+        </div>
+        <div class="cell_content">
+          <%= version.effective_date unless version.nil? %> 
+        </div>
       </td>
       <% last_updated_issue = project.issues.order(:updated_on).first %>
       <td> 
-        <%= link_to(last_updated_issue.subject, issue_path(last_updated_issue)) unless last_updated_issue.nil?%><br>
-        <%= last_updated_issue.updated_on unless last_updated_issue.nil?%> 
+        <div class="cell_header">
+          <%= link_to(last_updated_issue.subject, issue_path(last_updated_issue)) unless last_updated_issue.nil?%><br>
+        </div>
+        <div class="cell_content">
+          <%= last_updated_issue.updated_on unless last_updated_issue.nil?%> 
+        </div>
       </td>
       <% next_issue = project.issues.order(:due_date).first %>
       <td> 
-        <%= link_to(next_issue.subject, issue_path(next_issue)) unless next_issue.nil?%><br>
-        <%= next_issue.due_date unless next_issue.nil?%> 
+        <div class="cell_header">
+          <%= link_to(next_issue.subject, issue_path(next_issue)) unless next_issue.nil?%>
+        </div>
+        <div class="cell_content">
+          <%= next_issue.due_date unless next_issue.nil?%> 
+        </div>
       </td>
     </tr>
     <% end %>
