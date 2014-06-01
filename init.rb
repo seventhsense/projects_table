@@ -8,5 +8,5 @@ Redmine::Plugin.register :projects_table do
 
   menu :top_menu, :projects_table,
     {controller: 'projects_table', action: 'index'},
-    caption: 'Projects Table'
+    caption: :projects_table
 end
