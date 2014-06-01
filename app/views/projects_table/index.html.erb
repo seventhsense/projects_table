@@ -1,0 +1,61 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'jquery.dataTables.min.css', :plugin => 'projects_table' %>
+<% end %>
+<h2>Projects Table</h2>
+
+<table id="projects_table">
+  <thead>
+    <tr>
+      <th> 
+        Project Name <br>
+        created on <br>
+        updated on
+      </th>
+      <th> 
+        Version <br>
+        Effective Date 
+      </th>
+      <th> 
+        Last Updated Issue<br>
+        Updated on
+      </th>
+      <th>
+        Next Issue<br>
+        Due Date
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+    <tr>
+      <td> 
+        <%= link_to project.name, project_path(project) %><br>
+        <%= project.created_on %> <br>
+        <%= project.updated_on %>
+      </td>
+      <% version = project.versions.order(:effective_date).first %>
+      <td> 
+        <%= link_to(version.name, version_path(version)) unless version.nil? %> <br>
+        <%= version.effective_date unless version.nil? %> 
+      </td>
+      <% last_updated_issue = project.issues.order(:updated_on).first %>
+      <td> 
+        <%= link_to(last_updated_issue.subject, issue_path(last_updated_issue)) unless last_updated_issue.nil?%><br>
+        <%= last_updated_issue.updated_on unless last_updated_issue.nil?%> 
+      </td>
+      <% next_issue = project.issues.order(:due_date).first %>
+      <td> 
+        <%= link_to(next_issue.subject, issue_path(next_issue)) unless next_issue.nil?%><br>
+        <%= next_issue.due_date unless next_issue.nil?%> 
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= javascript_include_tag 'jquery.dataTables.min.js', :plugin => 'projects_table' %>
+
+<script>
+  $(function(){
+    $('#projects_table').dataTable();
+  })
+</script>
